@@ -91,9 +91,7 @@ export default class Body extends Component {
         <h3>Yeaa crypt it baby!</h3>
         <hr/>
         <ButtonDropdown className="margin-down" isOpen={this.state.dropdownOpen} toggle={this.toogleDropdown}>
-          <DropdownToggle caret>
-            {this.state.cryptName}
-          </DropdownToggle>
+          <DropdownToggle caret>{this.state.cryptName}</DropdownToggle>
           <DropdownMenu>
             {this.state.hashList.map((name) => {
               return <DropdownItem value={name} id={name.toLowerCase().replace("-","")} onClick={this.setHashAlgorithm}>{name}</DropdownItem>
