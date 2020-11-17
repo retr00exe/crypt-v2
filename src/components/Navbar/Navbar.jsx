@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -6,7 +7,6 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   Container
 } from 'reactstrap';
 import './Navbar.css'
@@ -29,16 +29,24 @@ export default class AppNavbar extends Component {
   render() {
     return(
       <div>
-        <Navbar color="dark" dark expand="sm" className="mb-5" id="navbar">
+        <Navbar dark expand="sm" className="mb-5" id="navbar">
           <Container>
             <NavbarBrand href="/">Crypt It Baby</NavbarBrand>
             <NavbarToggler onClick={this.toogle}/>
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 <NavItem>
-                  <NavLink href="https://github.com/retr00exe">
-                    GitHub
-                  </NavLink>
+                  <ul className="navbar-nav mr-auto">
+                    <li className="navbar-item">
+                      <Link to="/" className="nav-link">Hash</Link>
+                    </li>
+                    <li className="navbar-item">
+                      <Link to="/encoding" className="nav-link">Encoding</Link>
+                    </li>
+                    <li className="navbar-item">
+                      <Link to="/cipher" className="nav-link">Cipher</Link>
+                    </li>
+                  </ul>
                 </NavItem>
               </Nav>
             </Collapse>

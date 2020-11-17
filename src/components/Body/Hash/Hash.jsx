@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem, FormGroup, Input, Col } from 'reactstrap';
 import crypto from 'crypto';
-import './Body.css'
+import './Hash.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default class Body extends Component {
+export default class Hash extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -88,28 +88,37 @@ export default class Body extends Component {
   render() {
     return (
       <div className="body">
-        <h3>Yeaa crypt it baby!</h3>
-        <hr/>
-        <ButtonDropdown className="margin-down" isOpen={this.state.dropdownOpen} toggle={this.toogleDropdown}>
-          <DropdownToggle caret>{this.state.cryptName}</DropdownToggle>
-          <DropdownMenu>
-            {this.state.hashList.map((name) => {
-              return <DropdownItem value={name} id={name.toLowerCase().replace("-","")} onClick={this.setHashAlgorithm}>{name}</DropdownItem>
-            })}
-            <DropdownItem divider />
-            <DropdownItem value="Base 64" id="base64" onClick={this.setEncodingAlgorithm}>Base 64</DropdownItem>
-          </DropdownMenu>
-        </ButtonDropdown>
-        <FormGroup row>
-          <Col>
-            <p>Input</p>
-            <Input type="textarea" name="text" id="exampleText" rows="10" onChange={this.handleTextInput}/>
-          </Col>
-          <Col>
-            <p>Output <b>({this.state.cryptName})</b></p>
-            <Input type="textarea" name="text" id="exampleText" rows="3" value={this.state.hashValue} />
-          </Col>
-        </FormGroup>
+        <div className="app">
+          <div className="input">
+            <FormGroup row>
+              <Col>
+                <p>Input</p>
+                <Input type="textarea" name="text" id="exampleText" rows="10" onChange={this.handleTextInput}/>
+              </Col>
+            </FormGroup>
+          </div>
+          <div className="select">
+            <p>Select</p>
+            <ButtonDropdown className="margin-down" isOpen={this.state.dropdownOpen} toggle={this.toogleDropdown}>
+            <DropdownToggle caret>{this.state.cryptName}</DropdownToggle>
+            <DropdownMenu>
+              {this.state.hashList.map((name) => {
+                return <DropdownItem value={name} id={name.toLowerCase().replace("-","")} onClick={this.setHashAlgorithm}>{name}</DropdownItem>
+              })}
+              <DropdownItem divider />
+              <DropdownItem value="Base 64" id="base64" onClick={this.setEncodingAlgorithm}>Base 64</DropdownItem>
+            </DropdownMenu>
+          </ButtonDropdown>
+          </div>
+          <div className="output">
+            <FormGroup row>
+              <Col>
+                <p>Output <b>({this.state.cryptName})</b></p>
+                <Input type="textarea" name="text" id="exampleText" rows="10" value={this.state.hashValue} />
+              </Col>
+            </FormGroup>
+          </div>
+        </div>
       </div>
     );
   }

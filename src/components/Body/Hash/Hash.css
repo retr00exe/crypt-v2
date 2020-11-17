@@ -1,0 +1,33 @@
+.body {
+    margin: 0 180px
+}
+
+.margin-down {
+    margin-bottom: 20px;
+}
+
+.app {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 100px;
+}
+
+.app > div {
+    padding: 1em;
+    border-radius: 8px;
+}
+
+.app > div:nth-child(odd) {
+    background: #fff;
+    flex: 2;
+}
+
+.app > div:nth-child(even) {
+    background: #fff;
+    flex: 0.5;
+    margin: 0 50px;
+}
+
+.select {
+    text-align: center;
+}
