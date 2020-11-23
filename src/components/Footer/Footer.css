@@ -1,0 +1,10 @@
+.footer {
+    padding: 20px;
+    background-color: #1c1c1c;
+    color: #fff;
+    font-family: 'Zilla Slab', serif;
+}
+
+.footer-desc {
+    color: #FF9900;
+}

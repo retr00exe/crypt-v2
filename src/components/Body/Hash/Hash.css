@@ -1,5 +1,6 @@
 .body {
-    margin: 0 180px
+    background-color: #F2F4F6;
+    height: 100vh;
 }
 
 .margin-down {
@@ -9,25 +10,59 @@
 .app {
     display: flex;
     justify-content: space-between;
-    margin: 0 100px;
+    padding: 40px 100px;
+    font-family: 'Zilla Slab', serif;
+    font-size: 20px;
 }
 
 .app > div {
     padding: 1em;
-    border-radius: 8px;
+    text-align: center;
+    border: 2px #eee solid;
+    box-shadow: 3px 3px 2px #eee;
 }
 
 .app > div:nth-child(odd) {
     background: #fff;
     flex: 2;
+    margin: 0 30px;
 }
 
 .app > div:nth-child(even) {
     background: #fff;
-    flex: 0.5;
-    margin: 0 50px;
+    flex: 1;
 }
 
-.select {
-    text-align: center;
+.input-area {
+    border-width:0px;
+    border: none;
+}
+
+textarea {
+    width: 100%;
+    resize: none !important;
+    border: none;
+    overflow: auto;
+}
+
+textarea:focus {
+    outline: none;
+    resize: none;
+}
+
+hr {
+    margin: 30px -20px 20px;
+}
+
+.desc {
+    font-size: 16px;
+    text-align: left;
+    line-height: 0.5;
+    font-weight: 600;
+}
+
+.title {
+    color: #FF9900;
+    text-align: left;
+    padding: 10px 0;
 }

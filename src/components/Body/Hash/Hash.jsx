@@ -20,9 +20,7 @@ export default class Hash extends Component {
     }
     this.toogleDropdown = this.toogleDropdown.bind(this);
     this.encrypt = this.encrypt.bind(this);
-    this.encode = this.encode.bind(this);
     this.setHashAlgorithm = this.setHashAlgorithm.bind(this);
-    this.setEncodingAlgorithm = this.setEncodingAlgorithm.bind(this);
     this.handleTextInput = this.handleTextInput.bind(this);
   }
 
@@ -47,17 +45,6 @@ export default class Hash extends Component {
     hash.end();
   }
 
-  encode() {
-    console.log(this.state.textValue);
-    let data = this.state.textValue;
-    let buff = new Buffer(data);
-    let base64data = buff.toString(this.state.encodingAlgorithm);
-    this.setState({
-      hashValue: base64data
-    })
-    console.log(base64data);
-  }
-
   setHashAlgorithm(e) {
     this.setState({
       cryptName: e.target.value,
@@ -65,24 +52,10 @@ export default class Hash extends Component {
     }, () => this.encrypt());
   }
 
-  setEncodingAlgorithm(e) {
-    this.setState({
-      cryptName: e.target.value,
-      encodingAlgorithm: e.target.id,
-      isHash: !this.state.isHash
-    }, () => this.encode());
-  }
-
   handleTextInput(e) {
-    if(this.state.isHash){
-      this.setState({
-        textValue: e.target.value
-      }, () => this.encrypt())
-    }else{
-      this.setState({
-        textValue: e.target.value
-      }, () => this.encode())
-    }
+    this.setState({
+      textValue: e.target.value
+    }, () => this.encrypt())
   }
 
   render() {
@@ -90,33 +63,33 @@ export default class Hash extends Component {
       <div className="body">
         <div className="app">
           <div className="input">
-            <FormGroup row>
-              <Col>
-                <p>Input</p>
-                <Input type="textarea" name="text" id="exampleText" rows="10" onChange={this.handleTextInput}/>
-              </Col>
-            </FormGroup>
+            <h3>Input</h3>
+            <hr/>
+            <textarea type="textarea" rows={10} spellCheck="false" placeholder="The quick brown fox jumps over the lazy dog." onChange={this.handleTextInput} />
           </div>
           <div className="select">
-            <p>Select</p>
+            <h3>Select Hash</h3>
+            <hr/>
             <ButtonDropdown className="margin-down" isOpen={this.state.dropdownOpen} toggle={this.toogleDropdown}>
-            <DropdownToggle caret>{this.state.cryptName}</DropdownToggle>
-            <DropdownMenu>
-              {this.state.hashList.map((name) => {
-                return <DropdownItem value={name} id={name.toLowerCase().replace("-","")} onClick={this.setHashAlgorithm}>{name}</DropdownItem>
-              })}
-              <DropdownItem divider />
-              <DropdownItem value="Base 64" id="base64" onClick={this.setEncodingAlgorithm}>Base 64</DropdownItem>
-            </DropdownMenu>
-          </ButtonDropdown>
+              <DropdownToggle caret>{this.state.cryptName}</DropdownToggle>
+              <DropdownMenu>
+                {this.state.hashList.map((name) => {
+                  return <DropdownItem value={name} id={name.toLowerCase().replace("-","")} onClick={this.setHashAlgorithm}>{name}</DropdownItem>
+                })}
+              </DropdownMenu>
+            </ButtonDropdown>
+            <h3 class="title"><b>Description</b></h3>
+            <p class="desc">Name : MD-5</p>
+            <p class="desc">Digest sizes : 128-bit</p>
+            <p class="desc">Block sizes: 512 bit</p>
+            <p class="desc">Rounds: 4</p>
+            <p class="desc">First published : April 1992</p>
+            <p class="desc">Designers : Ronald Rivest</p>
           </div>
           <div className="output">
-            <FormGroup row>
-              <Col>
-                <p>Output <b>({this.state.cryptName})</b></p>
-                <Input type="textarea" name="text" id="exampleText" rows="10" value={this.state.hashValue} />
-              </Col>
-            </FormGroup>
+            <h3>Output <b>({this.state.cryptName})</b></h3>
+            <hr/>
+            <textarea type="textarea" rows={10} value={this.state.hashValue} />
           </div>
         </div>
       </div>

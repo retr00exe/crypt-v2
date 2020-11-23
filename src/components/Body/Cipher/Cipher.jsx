@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem, FormGroup, Input, Col, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import crypto from 'crypto';
-import './Encoding.css';
+import './Cipher.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default class Encoding extends Component {
+export default class Cipher extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -111,7 +111,7 @@ export default class Encoding extends Component {
             <Modal isOpen={this.state.modalOpen} toggle={this.toogleModal}>
               <ModalHeader toggle={this.toogleModal}>Select Encoding</ModalHeader>
               <ModalBody>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <button>Test</button>
               </ModalBody>
             </Modal>
           </div>

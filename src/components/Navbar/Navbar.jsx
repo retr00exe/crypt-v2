@@ -28,8 +28,8 @@ export default class AppNavbar extends Component {
 
   render() {
     return(
-      <div>
-        <Navbar dark expand="sm" className="mb-5" id="navbar">
+      <nav>
+        <Navbar dark expand="sm" className="mb-5">
           <Container>
             <NavbarBrand href="/">Crypt It Baby</NavbarBrand>
             <NavbarToggler onClick={this.toogle}/>
@@ -46,13 +46,19 @@ export default class AppNavbar extends Component {
                     <li className="navbar-item">
                       <Link to="/cipher" className="nav-link">Cipher</Link>
                     </li>
+                    <li className="navbar-item">
+                      <Link to="/rsa" className="nav-link">RSA</Link>
+                    </li>
+                    <li className="navbar-item">
+                      <Link to="/aes" className="nav-link">AES</Link>
+                    </li>
                   </ul>
                 </NavItem>
               </Nav>
             </Collapse>
           </Container>
         </Navbar>
-      </div>
+      </nav>
     )
   }
 }
